@@ -1,0 +1,62 @@
+@import "tailwindcss";
+
+:root {
+  color-scheme: light;
+  --canvas: #fafafa;
+  --ink: #4d4f62;
+  --muted: #6a7178;
+  --red: #ea5454;
+  --cyan: #44d3d2;
+  --orange: #fcae4a;
+  --blue: #549ef2;
+  --card: #ffffff;
+  --shadow: 0 15px 30px -11px rgb(131 166 210 / .5);
+}
+* { box-sizing: border-box; }
+html { font-size: 100%; }
+body { margin: 0; background: var(--canvas); color: var(--ink); font-family: var(--font-poppins), sans-serif; }
+a { color: inherit; text-underline-offset: .2em; }
+:focus-visible { outline: 3px solid var(--blue); outline-offset: 4px; }
+
+main { padding: 3.5rem 1.875rem 4.5rem; }
+.intro { max-width: 33.75rem; margin: 0 auto 3.75rem; text-align: center; }
+.intro h1 { margin: 0; font-size: 1.5rem; line-height: 1.4; letter-spacing: .25px; }
+.intro h1 span { display: block; }
+.intro-light { font-weight: 200; }
+.intro-strong { font-weight: 600; }
+.intro p { margin: 1rem 0 0; font-size: 1rem; line-height: 1.6; letter-spacing: .1px; }
+
+.features { display: grid; gap: 2rem; justify-content: center; grid-template-columns: minmax(0, 21.875rem); margin: 0; padding: 0; list-style: none; }
+.feature article { display: flex; flex-direction: column; min-height: 15.625rem; height: 100%; padding: 1.75rem 2rem 2rem; border-top: 4px solid var(--accent); border-radius: .5rem; background: var(--card); box-shadow: var(--shadow); }
+.feature h2 { margin: 0; font-size: 1.25rem; font-weight: 600; line-height: 1.35; }
+.feature p { margin: .375rem 0 2rem; color: var(--muted); font-size: 1rem; line-height: 1.6; letter-spacing: .09px; }
+.feature img { margin-top: auto; align-self: flex-end; flex: none; }
+.feature-supervisor { --accent: var(--cyan); }
+.feature-team-builder { --accent: var(--red); }
+.feature-karma { --accent: var(--orange); }
+.feature-calculator { --accent: var(--blue); }
+
+footer { padding: 0 1.5rem 1.5rem; color: var(--muted); font-size: 1rem; line-height: 1.5; text-align: center; text-wrap: balance; }
+footer a { display: inline-block; min-height: 2.75rem; padding-block: .625rem; }
+footer a:hover { color: var(--ink); }
+
+/* Tablet: Team Builder on top, Supervisor and Karma side by side, Calculator below (Figma Tablet frame). */
+@media (min-width: 48rem) {
+  main { padding-top: 5rem; }
+  .intro { margin-bottom: 4.625rem; }
+  .intro h1 { font-size: 2.25rem; line-height: 1.39; }
+  .features { grid-template-columns: repeat(2, minmax(0, 19.625rem)); grid-template-areas: "team team" "supervisor karma" "calculator calculator"; }
+  .feature-team-builder { grid-area: team; justify-self: center; width: min(100%, 19.625rem); }
+  .feature-supervisor { grid-area: supervisor; }
+  .feature-karma { grid-area: karma; }
+  .feature-calculator { grid-area: calculator; justify-self: center; width: min(100%, 19.625rem); }
+}
+
+/* Desktop: Supervisor and Calculator centred beside the stacked middle column (Figma Desktop frame). */
+@media (min-width: 64rem) {
+  main { padding-top: 6.375rem; }
+  .intro h1 { line-height: 1.39; }
+  .features { grid-template-columns: repeat(3, minmax(0, 21.875rem)); grid-template-areas: "supervisor team calculator" "supervisor karma calculator"; }
+  .feature-team-builder, .feature-calculator { width: auto; justify-self: stretch; }
+  .feature-supervisor, .feature-calculator { align-self: center; }
+}
