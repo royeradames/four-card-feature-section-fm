@@ -47,6 +47,8 @@ test("follows the Figma arrangement at mobile, tablet and desktop", async ({ pag
   await page.setViewportSize({ width: 375, height: 900 });
   await page.goto("/");
   const mobile = await Promise.all(cards.map(box));
+  expect(Math.abs(mobile[0].width - 314)).toBeLessThanOrEqual(2);
+  expect(Math.abs(mobile[0].x - 30.5)).toBeLessThanOrEqual(1.5);
   for (let index = 1; index < mobile.length; index++) {
     expect(mobile[index].y).toBeGreaterThan(mobile[index - 1].y + mobile[index - 1].height);
     expect(Math.abs(mobile[index].x - mobile[0].x)).toBeLessThan(1);

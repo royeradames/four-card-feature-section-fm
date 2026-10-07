@@ -18,7 +18,7 @@ body { margin: 0; background: var(--canvas); color: var(--ink); font-family: var
 a { color: inherit; text-underline-offset: .2em; }
 :focus-visible { outline: 3px solid var(--blue); outline-offset: 4px; }
 
-main { padding: 3.5rem 1.5rem 4.5rem; }
+main { padding: 3.5rem 1.875rem 4.5rem; }
 .intro { max-width: 33.75rem; margin: 0 auto 3.75rem; text-align: center; }
 .intro h1 { margin: 0; font-size: 1.5rem; line-height: 1.4; letter-spacing: .25px; }
 .intro h1 span { display: block; }
