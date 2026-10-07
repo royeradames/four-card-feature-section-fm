@@ -1,5 +1,7 @@
 /* Native images keep the supplied SVG icons at their intrinsic size. */
 /* eslint-disable @next/next/no-img-element */
+import { siteName } from "./site";
+
 const features = [
   { id: "supervisor", title: "Supervisor", body: "Monitors activity to identify project roadblocks", icon: "icon-supervisor.svg" },
   { id: "team-builder", title: "Team Builder", body: "Scans our talent network to create the optimal team for your project", icon: "icon-team-builder.svg" },
@@ -30,7 +32,7 @@ export default function Home() {
           ))}
         </ul>
       </main>
-      <footer>Challenge by <a href="https://www.frontendmentor.io/challenges/four-card-feature-section-weK1eFYK">Frontend Mentor</a>. Built by <a href="https://royeradames.com">Royer Adames</a>.</footer>
+      <footer><span className="site-name">{siteName}</span>. Challenge by <a href="https://www.frontendmentor.io/challenges/four-card-feature-section-weK1eFYK">Frontend Mentor</a>. Built by <a href="https://royeradames.com">Royer Adames</a>.</footer>
     </>
   );
 }

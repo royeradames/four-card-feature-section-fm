@@ -36,7 +36,7 @@ main { padding: 3.5rem 1.5rem 4.5rem; }
 .feature-karma { --accent: var(--orange); }
 .feature-calculator { --accent: var(--blue); }
 
-footer { padding: 0 1.5rem 1.5rem; color: var(--muted); font-size: 1rem; line-height: 1.5; text-align: center; }
+footer { padding: 0 1.5rem 1.5rem; color: var(--muted); font-size: 1rem; line-height: 1.5; text-align: center; text-wrap: balance; }
 footer a { display: inline-block; min-height: 2.75rem; padding-block: .625rem; }
 footer a:hover { color: var(--ink); }
 

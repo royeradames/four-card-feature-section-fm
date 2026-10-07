@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
+import { pageDescription, pageTitle, siteName, siteUrl } from "./site";
 import "./globals.css";
 
 const poppins = Poppins({
@@ -10,11 +11,23 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Four card feature section | Royer Adames",
-  description: "A responsive four card feature section built for the Frontend Mentor challenge.",
+  metadataBase: new URL(siteUrl),
+  title: pageTitle,
+  description: pageDescription,
+  alternates: { canonical: "/" },
+  openGraph: { type: "website", url: "/", siteName, title: pageTitle, description: pageDescription },
   icons: { icon: "/images/favicon-32x32.png" },
 };
 
+const websiteJsonLd = { "@context": "https://schema.org", "@type": "WebSite", name: siteName, url: siteUrl };
+
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="en" className={poppins.variable}><body>{children}</body></html>;
+  return (
+    <html lang="en" className={poppins.variable}>
+      <body>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }} />
+        {children}
+      </body>
+    </html>
+  );
 }

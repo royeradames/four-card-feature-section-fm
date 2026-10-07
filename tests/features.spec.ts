@@ -18,6 +18,15 @@ test("renders the supplied heading, intro and four feature cards", async ({ page
   }
 });
 
+test("declares one site name in the footer, og:site_name and WebSite JSON-LD", async ({ page }) => {
+  await page.goto("/");
+  await expect(page.locator(".site-name")).toHaveText("Four card feature section");
+  await expect(page.locator('meta[property="og:site_name"]')).toHaveAttribute("content", "Four card feature section");
+  await expect(page.locator('meta[name="description"]')).toHaveAttribute("content", /Supervisor, Team Builder, Karma and Calculator/);
+  const jsonLd = JSON.parse(await page.locator('script[type="application/ld+json"]').textContent() ?? "{}");
+  expect(jsonLd).toEqual({ "@context": "https://schema.org", "@type": "WebSite", name: "Four card feature section", url: "https://four-card-feature-section-fm.royeradames.com" });
+});
+
 test("each card keeps its accent colour from the style guide", async ({ page }) => {
   await page.goto("/");
   const expected: Record<string, string> = {
